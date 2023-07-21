@@ -1,0 +1,68 @@
+# graphql endpoint schema that defines the data
+
+#user
+
+scalar GraphQLDateType
+
+enum Title {
+  Employee
+  Manager
+  Director
+  VP
+}
+
+enum Department {
+  IT
+  Marketing
+  HR
+  Engineering
+}
+
+enum EmployeeType {
+  FullTime
+  PartTime
+  Contract
+  Seasonal
+}
+
+type Employee {
+  id: ID!
+  firstName: String
+  lastName: String
+  age: Int
+  dateOfJoining: GraphQLDateType
+  title: Title
+  department: Department
+  employeeType: EmployeeType
+  currentStatus: Boolean
+}
+
+type Query {
+  getAllEmployees: [Employee!]!
+  getSingleEmployee(id: ID!): Employee
+}
+
+type Mutation {
+  createEmployee(
+    firstName: String!
+    lastName: String!
+    age: Int!
+    dateOfJoining: GraphQLDateType!
+    title: Title!
+    department: Department!
+    employeeType: EmployeeType!
+  ): Employee!
+
+  updateEmployee(
+    id: ID!
+    firstName: String
+    lastName: String
+    age: Int
+    dateOfJoining: GraphQLDateType
+    title: Title
+    department: Department
+    employeeType: EmployeeType
+  ): String
+
+  deleteEmployee(id: ID!): String!
+}

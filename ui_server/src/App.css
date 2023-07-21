@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500;1,600&display=swap');
+
+:root{
+    --white:#ffffff;
+    --gray: #F4F2EF;
+    --brown: #9F8142;
+    --teal: #4BC1D2;
+    --dark: #0d1b1e;
+    --dark-brown: #2F2D2D;
+    --box-shadow:0 .5rem 1.5rem rgba(0,0,0,.1);
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-size: 16px;
+    color: var(--dark);
+}
+
+body {
+  background-color: var(--white);
+  margin: 0;
+  min-height: 100vh;
+}
+
+.employee_directory {
+  border: 1px solid var(--gray);
+  box-shadow: var(--box-shadow);
+  border-radius: 10px;
+  height: 100%;
+  padding: 2em;
+}
+
+.partition_widget {
+  width: 100%;
+}
+
+.header {
+  margin-bottom: 2em;
+}
+
+/* .header_style{
+  padding: 1em;
+} */
+
+a {
+  text-decoration: none;
+}
+
+Button {
+  width:5em
+}
+
+.create_employee {
+  border: 1px solid red;
+}
