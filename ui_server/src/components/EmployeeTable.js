@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDeleteEmployee } from "../hooks/useEmployees";
@@ -17,6 +17,10 @@ const EmployeeTable = ({ data, loading }) => {
     deleteEmployee({
       variables: { deleteEmployeeId: id }, // Passes the 'id' parameter as 'deleteEmployeeId' variable
       refetchQueries: "all", // REFETCH: Pass an array of query names or functions to refetch specific queries or pass an empty array '[]' to refetch all queries.
+      onCompleted: (data) => {
+        alert(data.deleteEmployee);
+        // console.log(data.deleteEmployee);
+      },
     });
   };
 
@@ -68,7 +72,15 @@ const EmployeeTable = ({ data, loading }) => {
                       {/* Button to delete the specific employee */}
                       <Button
                         variant="danger"
-                        onClick={() => handleDelete(item.id)} // Call 'handleDelete' function with the employee ID on button click
+                        onClick={() => {
+                          if (
+                            window.confirm(
+                              `Are you sure you want to remove ${item.firstName} ${item.lastName} from employee table?`
+                            )
+                          ) {
+                            handleDelete(item.id);
+                          }
+                        }} // Call 'handleDelete' function with the employee ID on button click
                       >
                         Delete
                       </Button>

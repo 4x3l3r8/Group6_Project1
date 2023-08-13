@@ -114,12 +114,22 @@ const resolvers = {
         console.log("Error updating employee:", error);
         throw error;
       }
-      
     },
     deleteEmployee: async (_, { id }) => {
       try {
         // Find and delete an employee by their ID
-        await EmployeeModel.findByIdAndDelete(id);
+        // await EmployeeModel.findByIdAndDelete(id);
+
+        // Find employee by ID     
+        const employee = await EmployeeModel.findById(id);
+
+        // Don't delete employee if still active
+        if (employee.currentStatus) {
+          return "CAN'T DELETE EMPLOYEE - STATUS ACTIVE";
+        } else {
+         await employee.deleteOne();
+        }
+
         return "Employee deleted successfully";
       } catch (error) {
         console.log("Error deleting employee:", error);
