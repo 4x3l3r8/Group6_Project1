@@ -8,7 +8,7 @@ import Edit from "./components/Edit";
 
 const App = () => {
   return (
-    <div className="body">
+    <div className="body position-relative">
       {/* Render the Header component */}
       <div className="header">
         <Header />
